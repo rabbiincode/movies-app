@@ -1,0 +1,6 @@
+.banner{
+  backgroundSize: cover;
+  backgroundRepeat: no-repeat;
+  backgroundPosition: center;
+  max-width: 100%;
+}

@@ -1,0 +1,117 @@
+.home{
+  color: white;
+}
+
+.home-background{
+  position: relative;
+  background: #18181b;
+  height: 70vh;
+}
+
+.movie{
+  width: 40%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0 6rem;
+}
+
+.scores{
+  display: flex;
+  align-items: center;
+  color: white;
+  opacity: 0.8;
+}
+
+.title-1{
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.name{
+  background: yellow;
+  color: black;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  border-radius: 1.5px;
+  margin-right: 1rem;
+  padding: 0.05rem 0.2rem;
+}
+
+.percentage{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 3rem;
+}
+
+.description-1{
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+}
+
+button{
+  background: #BE123C;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 0.5rem;
+  padding: 0.7rem 1.5rem;
+}
+
+.movies{
+  color: black;
+  padding: 6rem;
+}
+
+.featured{
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.see-more{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #BE123C;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.movies-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 3.5rem;
+}
+
+@media (max-width: 768px){
+  .movie{
+    width: 70%;
+    padding: 0 3rem;
+  }
+
+  .movies{
+    padding: 3rem;
+  }
+}
+
+@media (max-width: 450px){
+  .movie{
+    padding: 0 1.5rem;
+  }
+
+  .movies{
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,44 @@
+.footer{
+  display: table;
+  color: black;
+  text-align: center;
+  margin: auto;
+}
+
+.footer > div{
+  margin-bottom: 2rem;
+}
+
+.socials{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.socials > img{
+  width: 1.5rem;
+}
+
+.info{
+  display: flex;
+  gap: 3rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.copyright{
+  color: gray;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+@media (max-width: 450px){
+  .info{
+    font-size: 1rem;
+  }
+
+  .copyright{
+    font-size: 0.9rem;
+  }
+}

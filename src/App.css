@@ -1,38 +1,54 @@
-.App {
-  text-align: center;
+html, body{
+  min-height: 100%;
+  font-size: clamp(10px, 16px, 20px);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button{
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+button:hover{
+  opacity: 0.8;
+}
+
+img{
+  max-width: 100%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #000;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #111827;
+}
+
+@media (max-width: 768px){
+  html, body{
+    font-size: clamp(8px, 14.5px, 18px);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 640px){
+  html, body{
+    font-size: clamp(8px, 14.5px, 18px);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 375px){
+  html, body{
+    font-size: clamp(6px, 11px, 15px);
   }
 }
