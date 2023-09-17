@@ -4,6 +4,7 @@ import request from '../../api'
 import Card from '../card/Card'
 import './search-screen.css'
 import '../card/card.css'
+import Footer from '../footer/Footer'
 
 const SearchScreen = () => {
   const { input } = useParams()
@@ -43,9 +44,10 @@ const SearchScreen = () => {
   }
 
   return (
-    <div className='search movie-cards'>
+    <div className='search'>
       <div className='result'>Result(s): {input}</div>
       <Card movies={movies}/>
+      <Footer/>
     </div>
   )
 }

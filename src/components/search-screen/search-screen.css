@@ -1,6 +1,5 @@
 .search{
-  position: relative;
-  padding: 6rem;
+  padding: 6rem 6rem 0;
 }
 
 .spin{
@@ -12,11 +11,16 @@
 }
 
 .result{
-  position: absolute;
+  position: fixed;
+  background: #000;
+  color: #fff;
   top: 0;
+  left: 0;
+  right: 0;
   font-size: 1.5rem;
   font-weight: 600;
-  margin: 2rem 0;
+  padding: 1rem;
+  z-index: 200;
 }
 
 .spinner{
@@ -42,26 +46,21 @@
 
 @media (max-width: 768px){
   .search{
-    padding: 3rem;
+    padding: 6rem 3rem 0 3rem;
   }
 
   .spinner{
     height: 2.5rem;
     width: 2.5rem;
   }
-
-  .result{
-    margin-top: 0.5rem;
-  }
 }
 
 @media (max-width: 450px){
   .search{
-    padding: 2.5rem;
+    padding: 6rem 2.5rem 0 2.5rem;
   }
 
   .result{
     font-size: 1.2rem;
-    margin-top: 0;
   }
 }

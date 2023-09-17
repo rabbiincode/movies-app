@@ -5,10 +5,10 @@ const Footer = () => {
   return (
     <div className='footer'>
       <div className='socials'>
-        <img src='icons/socials/facebook.png' alt='img'/>
-        <img src='icons/socials/instagram.png' alt='img'/>
-        <img src='icons/socials/twitter.png' alt='img'/>
-        <img src='icons/socials/youtube.png' alt='img'/>
+        <img src='/icons/socials/facebook.png' alt='img'/>
+        <img src='/icons/socials/instagram.png' alt='img'/>
+        <img src='/icons/socials/twitter.png' alt='img'/>
+        <img src='/icons/socials/youtube.png' alt='img'/>
       </div>
 
       <div className='info'>
@@ -16,7 +16,7 @@ const Footer = () => {
         <span>Privacy & Policy</span>
         <span>Press Room</span>
       </div>
-      <div className='copyright'>&copy; 2021 MovieBox by Adriana Eka Prayudha</div>
+      <div className='copyright'>&copy; 2023 MovieBox by Adriana Eka Prayudha</div>
     </div>
   )
 }
