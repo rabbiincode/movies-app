@@ -23,7 +23,7 @@ const Card = ({movies}) => {
   }
 
   return (
-    <div className='movie-cards'>
+    <div data-testid="movie-card" className='movie-cards'>
       {movies.map((movie, index) => (
         <div className='box' key={index}>
           <div className='image' onClick={() => navigate(`/movies/${movie.id}`)}>

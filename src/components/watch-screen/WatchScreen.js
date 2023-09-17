@@ -117,7 +117,7 @@ const WatchScreen = () => {
 
         <div className='cards'>
           <div className='card-1'>
-            <p className='card-1-desc' data-testid="movie-overview">{overview}</p>
+            <p data-testid="movie-overview" className='card-1-desc'>{overview}</p>
 
             <p>Director: <span>{director || '-'}</span></p>
             <p>Writers: <span>{writers.join(', ') || '-'}</span></p>

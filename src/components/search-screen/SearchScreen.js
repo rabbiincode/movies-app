@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import request from '../../api'
 import Card from '../card/Card'
 import './search-screen.css'
@@ -8,6 +8,7 @@ import Footer from '../footer/Footer'
 
 const SearchScreen = () => {
   const { input } = useParams()
+  const navigate = useNavigate()
   const [error, setError] = useState('')
   const [movies, setMovies] = useState([])
 
@@ -45,7 +46,13 @@ const SearchScreen = () => {
 
   return (
     <div className='search'>
-      <div className='result'>Result(s): {input}</div>
+      <div className='result'>
+        <span>Result(s): {input}</span>
+        <span onClick={() => navigate('/')} className='back'>
+          <img src='/icons/home/arrow-down.png' alt='img'/>
+          <span>Back</span>
+        </span>
+      </div>
       <Card movies={movies}/>
       <Footer/>
     </div>
