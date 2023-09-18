@@ -65,10 +65,24 @@ const WatchScreen = () => {
     }
     fetchMovieDetails()
     fetchTrailerKey()
-  }, [banner.movieId])
+  }, [id])
 
-  const { title, runtime, release_date, vote_average, vote_count, overview, awards, nominations } = movieDetails
+  const { title, runtime, release_date, vote_average, vote_count, overview } = movieDetails
   const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+  const formatTime = (minutes) => {
+    if (minutes >= 60){
+      const hours = Math.floor(minutes / 60)
+      minutes %= 60
+      if (minutes === 0){
+        return hours + 'h'
+      } else{
+        return hours + 'h ' + minutes + 'm'
+      }
+    } else{
+      return minutes + 'm'
+    }
+  }
 
   return (
     <div className='watch-screen'>
@@ -104,14 +118,15 @@ const WatchScreen = () => {
               <span>•</span>
               <span>PG-13</span>
               <span>•</span>
-              <span data-testid="movie-runtime">{runtime}Mins</span>
+              <span data-testid="movie-runtime">{formatTime(runtime)}</span>
             </span>
             <small>Action</small>
             <small>Drama</small>
           </p>
           <p className='count'>
             <img src='/icons/watch/star.png' alt='img'/>
-            <span>{vote_average?.toFixed(1)}</span> | {vote_count}k
+            <span className='vote_average'>{vote_average?.toFixed(1)}</span>
+            <span className='vote_count'>| {vote_count}k</span>
           </p>
         </div>
 

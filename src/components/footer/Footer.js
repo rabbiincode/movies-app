@@ -16,7 +16,7 @@ const Footer = () => {
         <span>Privacy & Policy</span>
         <span>Press Room</span>
       </div>
-      <div className='copyright'>&copy; 2023 MovieBox by Success</div>
+      <div className='copyright'>&copy; {new Date().getFullYear()} MovieBox by Success</div>
     </div>
   )
 }

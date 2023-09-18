@@ -34,7 +34,7 @@ const Card = ({movies}) => {
           </div>
 
           <div className='movie-description'>
-            <p data-testid="movie-release-date">USA, {new Date(movie.release_date).getUTCFullYear()}</p>
+            <p>USA, <span data-testid="movie-release-date">{new Date(movie.release_date).getUTCFullYear()}</span></p>
             <p data-testid="movie-title" className='movie-title'>{movie.title}</p>
             <p className='movie-scores'>
               <span>

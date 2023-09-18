@@ -101,11 +101,14 @@ iframe{
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  opacity: 0.65;
 }
 
-.count > span{
+.vote_average{
   opacity: 0.3;
+}
+
+.vote_count{
+  opacity: 0.65;
 }
 
 .cards{
