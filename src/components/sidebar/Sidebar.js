@@ -1,6 +1,6 @@
 import React from 'react'
-import './sidebar.css'
 import { useLocation, useNavigate } from 'react-router'
+import './sidebar.css'
 
 const Sidebar = ({open, toggleSidebar}) => {
   const location = useLocation()

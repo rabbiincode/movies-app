@@ -4,6 +4,33 @@
   justify-content: space-between;
 }
 
+.movie-cards-1{
+  justify-content: space-around;
+}
+
+.favorite{
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.favorite > span{
+  color: #f90684;
+  cursor: pointer;
+}
+
+.favorite > span:hover{
+  color: #f472b6;
+}
+
+.favorite > img{
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
 .box{
   width: 280px;
   margin-bottom: 3rem;
@@ -11,10 +38,13 @@
 
 .image{
   position: relative;
-  background: gray;
   max-height: 400px;
   width: 100%;
   cursor: pointer;
+}
+
+.image > img{
+  border-radius: 10px;
 }
 
 .favorite-movie{
@@ -36,6 +66,14 @@
   width: 1.5rem;
 }
 
+.favorite-movie:hover{
+  opacity: 0.8;
+}
+
+.added-to-favorite{
+  background: #f1adb8;
+}
+
 .movie-description{
   display: flex;
   flex-direction: column;
@@ -51,7 +89,7 @@
 
 .movie-title{
   color: black;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
 }
 

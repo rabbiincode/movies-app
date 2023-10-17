@@ -1,9 +1,12 @@
-import React from 'react'
-import { useNavigate } from 'react-router'
+import React, {useState} from 'react'
+import { useLocation, useNavigate } from 'react-router'
 import './card.css'
 
 const Card = ({movies}) => {
   const navigate = useNavigate()
+  const location = useLocation()
+  const [favorites, setFavorites] = useState([])
+  const favoriteMoviesString = JSON.stringify(favorites)
   const imageUrl = 'https://image.tmdb.org/t/p/w300/'
 
   const genres = [
@@ -15,40 +18,58 @@ const Card = ({movies}) => {
   ]
 
   const getGenreName = (genreId) => {
-    const getName = genreId.map((genreId) => {
-      const genre = genres.find((g) => g.number === genreId)
+    const getName = genreId?.map((genreId) => {
+      const genre = genres.find((g) => g.number === genreId || g.number === genreId.id)
       return genre ? genre.name : 'Movie'
     })
-    return getName.join(', ')
+    return getName?.join(', ')
   }
 
+  const favoriteMovies = (movieId) => {
+    if (favorites.includes(movieId)){
+      const updatedFavorites = favorites.filter((id) => id !== movieId)
+      setFavorites(updatedFavorites)
+    } else{
+      setFavorites([...favorites, movieId])
+    }
+  }
+  console.log(movies)
   return (
-    <div data-testid="movie-card" className='movie-cards'>
-      {movies.map((movie, index) => (
-        <div className='box' key={index}>
-          <div className='image' onClick={() => navigate(`/movies/${movie.id}`)}>
-            <img src={imageUrl + movie.poster_path} alt='img' data-testid="movie-poster"/>
-            <span className='favorite-movie'>
-              <img src='/icons/home/favorite.png' alt='img'/>
-            </span>
-          </div>
-
-          <div className='movie-description'>
-            <p>USA, <span data-testid="movie-release-date">{new Date(movie.release_date).getUTCFullYear()}</span></p>
-            <p data-testid="movie-title" className='movie-title'>{movie.title}</p>
-            <p className='movie-scores'>
-              <span>
-                <span className='name'>IMDb</span>
-                <span className='rating'>{(movie.vote_average * 10).toFixed(1)} / 100</span>
-              </span>
-              <span className='percentage'>
-                <img src='/icons/home/fruit.png' alt='img'/> {(movie.vote_average * 10).toFixed(0)}%
-              </span>
-            </p>
-            <p>{getGenreName(movie.genre_ids)}</p>
-          </div>
+    <div>
+      {
+        !location.pathname.startsWith('/favorite-movies') &&
+        <div className='favorite'>
+          <span onClick={() => navigate(`/favorite-movies/${favoriteMoviesString}`)}>go to favorites</span>
+          <img src='/icons/home/favorite.png' alt='img'/>
         </div>
-      ))}
+      }
+      <div className={`movie-cards ${location.pathname.startsWith('/favorite-movies') && 'movie-cards-1'}`}>
+        {movies?.map((movie, index) => (
+          <div className='box' key={index}>
+            <div className='image'>
+              <img src={imageUrl + movie.poster_path} alt='img' onClick={() => navigate(`/movies/${movie.id}`)}/>
+              <span onClick={() => favoriteMovies(movie.id)} className={`favorite-movie ${favorites.includes(movie.id) && 'added-to-favorite'}`}>
+                <img src='/icons/home/favorite.png' alt='img'/>
+              </span>
+            </div>
+
+            <div className='movie-description'>
+              <p>USA, {movie.release_date}</p>
+              <p className='movie-title'>{movie.title}</p>
+              <p className='movie-scores'>
+                <span>
+                  <span className='name'>IMDb</span>
+                  <span className='rating'>{(movie.vote_average * 10).toFixed(1)} / 100</span>
+                </span>
+                <span className='percentage'>
+                  <img src='/icons/home/fruit.png' alt='img'/> {(movie.vote_average * 10).toFixed(0)}%
+                </span>
+              </p>
+              <p>{getGenreName(movie.genre_ids || movie.genres)}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

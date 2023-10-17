@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import request from '../../api'
-import './banner.css'
 
 const Banner = () => {
   const [error, setError] = useState('')
@@ -35,7 +34,7 @@ const Banner = () => {
     getMovieBanner()
   }, [])
 
-  return movieData
+  return error ? error : movieData
 }
 
 export default Banner

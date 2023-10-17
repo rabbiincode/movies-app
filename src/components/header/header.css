@@ -8,10 +8,12 @@
   right: 0;
   padding: 1.5rem 6rem;
   z-index: 200;
+  transition: all ease-in-out 1.2s;
 }
 
 .change-background{
   background: #000;
+  transition: all ease-in-out 1.2s;
 }
 
 .menu, .navbar, form{

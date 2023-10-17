@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react'
+import { useParams } from 'react-router'
 import request from '../../api'
 import Banner from '../banner/Banner'
 import Sidebar from '../sidebar/Sidebar'
 import './watch-screen.css'
-import { useParams } from 'react-router'
 
 const WatchScreen = () => {
   const banner = Banner()
   const { id } = useParams()
-  const [error, setError] = useState('')
+  const [error, setError] = useState('loading...')
   const [open, setOpen] = useState(false)
   const [director, setDirector] = useState('')
   const [writers, setWriters] = useState([])
@@ -84,10 +84,11 @@ const WatchScreen = () => {
     }
   }
 
+  if (!id) return error
+
   return (
     <div className='watch-screen'>
       <Sidebar open={open} toggleSidebar={toggleSidebar}/>
-
       <span className='navbar-icon'>
         <img src='/icons/header/navbar.png' alt='img' onClick={() => toggleSidebar()} className='toggle'/>
       </span>

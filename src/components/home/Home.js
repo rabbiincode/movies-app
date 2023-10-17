@@ -10,18 +10,18 @@ import './home.css'
 const Home = () => {
   const banner = Banner()
   const navigate = useNavigate()
-  const [error, setError] = useState('')
   const [movies, setMovies] = useState([])
+  const [error, setError] = useState('loading...')
   const playTrailer = () => navigate(`/movies/${banner.movieId}`)
 
-    useEffect(() => {
+  useEffect(() => {
     const searchMovies = async () => {
       try {
         const response = await request.get('/discover/movie')
         const movieData = response.data.results
         setMovies(movieData)
       } catch (err){
-        setError('An error occurred while fetching data.')
+        setError('Could not fetch movies...try again')
       }
     }
     searchMovies()
@@ -29,9 +29,8 @@ const Home = () => {
 
   return (
     <div className='home'>
-      <div className='home-background' style={{ backgroundImage: `url(${banner.posterURL})` }}>
+      <div className='home-background' style={{ backgroundImage: `url(${banner.posterURL})`, backgroundSize: 'cover' }}>
         <Header/>
-
         <div className='movie'>
           <div>
             <p className='title-1'>{banner.title}</p>
@@ -57,10 +56,8 @@ const Home = () => {
             See more <img src='/icons/home/arrow-right.png' alt='img'/>
           </span>
         </div>
-
-        <Card movies={movies}/>
+        {movies.length > 0 ? <Card movies={movies}/> : <span className='error'>{error}</span>}
       </div>
-
       <Footer/>
     </div>
   )

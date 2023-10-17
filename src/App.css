@@ -43,7 +43,7 @@ img{
 
 @media (max-width: 640px){
   html, body{
-    font-size: clamp(8px, 14.5px, 18px);
+    font-size: clamp(7px, 13.5px, 17px);
   }
 }
 
