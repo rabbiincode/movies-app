@@ -64,6 +64,7 @@
 
 .favorite-movie > img{
   width: 1.5rem;
+  margin-top: 0.2rem;
 }
 
 .favorite-movie:hover{
@@ -71,7 +72,7 @@
 }
 
 .added-to-favorite{
-  background: #f1adb8;
+  background: #ec4899;
 }
 
 .movie-description{
