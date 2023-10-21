@@ -1,8 +1,13 @@
 .footer{
   display: table;
-  color: black;
+  color: #000;
   text-align: center;
+  padding-top: 2rem;
   margin: auto;
+}
+
+.footer-dark{
+  color: #fff;
 }
 
 .footer > div{
@@ -18,6 +23,11 @@
 
 .socials > img{
   width: 1.5rem;
+}
+
+.facebook{
+  background: #141414;
+  border-radius: 50%;
 }
 
 .info{
@@ -40,5 +50,11 @@
 
   .copyright{
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 450px){
+  .conditions{
+    display: none;
   }
 }

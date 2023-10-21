@@ -13,8 +13,17 @@
   height: 2.5rem;
   transition: 0.3s;
   border-radius: 50%;
-  margin: 0.5rem 0 0.5rem 0.5rem;
+  cursor: pointer;
+  margin: 0 0.5rem 1rem;
   z-index: 100;
+}
+
+.watch-screen{
+  min-height: 100vh;
+}
+
+.watch-screen-dark{
+  color: #fff;
 }
 
 .watch{
@@ -29,6 +38,7 @@
   height: 45vh;
   border-radius: 20px;
   cursor: pointer;
+  margin-bottom: 1rem;
 }
 
 iframe{
@@ -75,7 +85,7 @@ iframe{
   justify-content: space-between;
   font-size: 1.3rem;
   font-weight: 600;
-  margin: 0 1.5rem;
+  margin: 1rem 1.5rem;
 }
 
 .heading{
@@ -95,6 +105,11 @@ iframe{
   border: 0.1px solid #e7e5e4;
   border-radius: 20px;
   padding: 0.1rem 0.8rem;
+}
+
+.heading-dark > small{
+  color: #dc2626;
+  border: 1px solid #292929;
 }
 
 .count{
@@ -121,7 +136,7 @@ iframe{
   width: 70%;
   font-size: 1.1rem;
   font-weight: 500;
-  margin-right: 1.5rem;
+  margin: 1.5rem 1.5rem 0 0;
 }
 
 .card-1 > p{
@@ -132,6 +147,10 @@ iframe{
   color: darkred;
 }
 
+.card-1-dark > p > span{
+  color: #dc2626;
+}
+
 .click{
   display: flex;
   align-items: center;
@@ -139,6 +158,12 @@ iframe{
   border: 1px solid lightgray;
   border-radius: 10px;
   padding: 0;
+  margin-bottom: 0.8rem;
+}
+
+.click-dark{
+  background: transparent;
+  border: 1px solid #383838;
 }
 
 .click > button{
@@ -158,8 +183,6 @@ button{
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin: autoy;
-  background: gray;
   background: darkred;
   color: white;
   font-size: 1rem;
@@ -169,6 +192,11 @@ button{
   padding: 0.9rem;
 }
 
+.button-dark{
+  background: #ef4444;
+  color: #0c0a09;
+}
+
 .button-1{
   flex: 1;
   justify-content: space-between;
@@ -176,6 +204,11 @@ button{
   color: black;
   font-weight: 600;
   padding: 0 1rem;
+}
+
+.button-1-dark{
+  background: transparent;
+  color: #fff;
 }
 
 .button-2{
@@ -193,7 +226,7 @@ button{
   background: gray;
   height: 250px;
   border-radius: 20px;
-  margin-top: 1.5rem;
+  margin: 1.5rem 0 1rem;
 }
 
 .image-banner > span{
@@ -230,7 +263,8 @@ button{
   .title{
     flex-direction: column;
     align-items: start;
-    margin: 0;
+    gap: 2rem;
+    margin: 0 0 0.8rem;
   }
 
   .cards{

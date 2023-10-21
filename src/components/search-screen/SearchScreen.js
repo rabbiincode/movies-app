@@ -6,7 +6,7 @@ import Footer from '../footer/Footer'
 import './search-screen.css'
 import '../card/card.css'
 
-const SearchScreen = () => {
+const SearchScreen = ({darkMode}) => {
   const { input } = useParams()
   const navigate = useNavigate()
   const [error, setError] = useState('')
@@ -17,11 +17,11 @@ const SearchScreen = () => {
       try {
         const response = await request.get('/search/movie', {
           params: {
-            query: input,
-          },
+            query: input
+          }
         })
         const movieData = response.data.results
-        const moviesWithPoster = movieData.filter(movie => movie.poster_path)
+        const moviesWithPoster = movieData?.filter(movie => movie?.poster_path)
 
         if (moviesWithPoster.length > 0) {
           setMovies(moviesWithPoster)
@@ -29,7 +29,7 @@ const SearchScreen = () => {
           setError('No movies with poster URLs found')
         }
       } catch (err){
-        setError('An error occurred while fetching data')
+        setError('Could not get result...please try again')
       }
     }
     searchMovies()
@@ -62,8 +62,8 @@ const SearchScreen = () => {
           <span>Back</span>
         </span>
       </div>
-      <Card movies={movies}/>
-      <Footer/>
+      <Card movies={movies} darkMode={darkMode}/>
+      <Footer darkMode={darkMode}/>
     </div>
   )
 }

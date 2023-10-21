@@ -5,9 +5,9 @@ import Banner from '../banner/Banner'
 import Sidebar from '../sidebar/Sidebar'
 import './watch-screen.css'
 
-const WatchScreen = () => {
+const WatchScreen = ({darkMode}) => {
   const banner = Banner()
-  const { id } = useParams()
+  const {id} = useParams()
   const [error, setError] = useState('loading...')
   const [open, setOpen] = useState(false)
   const [director, setDirector] = useState('')
@@ -87,8 +87,8 @@ const WatchScreen = () => {
   if (!id) return error
 
   return (
-    <div className='watch-screen'>
-      <Sidebar open={open} toggleSidebar={toggleSidebar}/>
+    <div className={`watch-screen ${darkMode && 'watch-screen-dark'}`}>
+      <Sidebar open={open} toggleSidebar={toggleSidebar} darkMode={darkMode}/>
       <span className='navbar-icon'>
         <img src='/icons/header/navbar.png' alt='img' onClick={() => toggleSidebar()} className='toggle'/>
       </span>
@@ -111,15 +111,15 @@ const WatchScreen = () => {
         </div>
 
         <div className='title'>
-          <p className='heading'>
+          <p className={`heading ${darkMode && 'heading-dark'}`}>
             <span className='heading-description'>
-              <span data-testid="movie-title">{title}</span>
+              <span>{title}</span>
               <span>•</span>
-              <span data-testid="movie-release-date">{new Date(release_date).getUTCFullYear()}</span>
+              <span>{new Date(release_date).getUTCFullYear()}</span>
               <span>•</span>
               <span>PG-13</span>
               <span>•</span>
-              <span data-testid="movie-runtime">{formatTime(runtime)}</span>
+              <span>{formatTime(runtime)}</span>
             </span>
             <small>Action</small>
             <small>Drama</small>
@@ -132,23 +132,22 @@ const WatchScreen = () => {
         </div>
 
         <div className='cards'>
-          <div className='card-1'>
-            <p data-testid="movie-overview" className='card-1-desc'>{overview}</p>
-
+          <div className={`card-1 ${darkMode && 'card-1-dark'}`}>
+            <p className='card-1-desc'>{overview}</p>
             <p>Director: <span>{director || '-'}</span></p>
             <p>Writers: <span>{writers.join(', ') || '-'}</span></p>
             <p>Stars: <span>{stars.join(', ') || '-'}</span></p>
-            <div className='click'>
-              <button>Top rated movie #65</button>
-              <button className='button-1'>
+            <div className={`click ${darkMode && 'click-dark'}`}>
+              <button className={`${darkMode && 'button-dark'}`}>Top rated movie #65</button>
+              <button className={`button-1 ${darkMode && 'button-1-dark'}`}>
                 Awards 9 nominations <img src='/icons/home/arrow-down.png' alt='img'/>
               </button>
             </div>
           </div>
 
           <div className='card-2'>
-            <button>
-              <img src='/icons/watch/tickets.png' alt='img'/> See Showtimes
+            <button className={`${darkMode && 'button-dark'}`}>
+              <img src='/icons/watch/tickets.png' alt='img'/> See ShowTimes
             </button>
             <button className='button-2'>
               <img src='/icons/watch/list.png' alt='img'/> More watch options

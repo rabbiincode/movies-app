@@ -2,16 +2,15 @@ import React from 'react'
 import { useLocation, useNavigate } from 'react-router'
 import './sidebar.css'
 
-const Sidebar = ({open, toggleSidebar}) => {
+const Sidebar = ({open, toggleSidebar, darkMode}) => {
   const location = useLocation()
   const navigate = useNavigate()
 
   return (
-    <div className={`sidebar ${open && 'show'}`}>
-      <span className='navbar-icon'>
-        <img src='/icons/header/navbar.png' alt='img' onClick={() => toggleSidebar()} className='toggle'/>
+    <div className={`sidebar ${open && 'show'} ${darkMode && 'sidebar-dark'}`}>
+      <span onClick={() => toggleSidebar()} className='navbar-icon'>
+        <img src='/icons/header/navbar.png' alt='img' className='toggle'/>
       </span>
-
       <div className='logo'>
         <img src='/icons/header/logo.png' alt='img'/>
         <span>MovieBox</span>   
@@ -21,7 +20,7 @@ const Sidebar = ({open, toggleSidebar}) => {
         <span onClick={()=> navigate('/')} className={location.pathname === '/' && 'active-link'}>
           <img src='/icons/sidebar/home.png' alt='img'/> Home
         </span>
-        <span className={location.pathname.startsWith('/movies/') && 'active-link'}>
+        <span className={location.pathname.startsWith('/watch/') && 'active-link'}>
           <img src='/icons/sidebar/movie-projector.png' alt='img'/> Movies
         </span>
         <span>

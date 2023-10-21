@@ -1,4 +1,5 @@
 .search{
+  min-height: 100vh;
   padding: 6rem 6rem 0;
 }
 
@@ -34,7 +35,7 @@
 
 .result{
   position: fixed;
-  background: #000;
+  background: #14532d;
   color: #fff;
   top: 0;
   left: 0;
@@ -60,7 +61,7 @@
 }
 
 .back:hover{
-  opacity: 0.5;
+  opacity: 0.85;
 }
 
 .back > img{
@@ -99,9 +100,15 @@
   }
 }
 
-@media (max-width: 768px){
+@media (max-width: 1200px){
   .search{
     padding: 6rem 3rem 0 3rem;
+  }
+}
+
+@media (max-width: 768px){
+  .search{
+    padding: 6rem 2rem 0 2rem;
   }
 
   .spinner{
@@ -112,7 +119,7 @@
 
 @media (max-width: 450px){
   .search{
-    padding: 6rem 2.5rem 0 2.5rem;
+    padding: 6rem 1.5rem 0 1.5rem;
   }
 
   .result{

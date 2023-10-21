@@ -1,15 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import { useLocation, useNavigate } from 'react-router'
-import { get, ref, set } from 'firebase/database';
-import {database, userData, userId, userRef} from '../../firebase'
+import { get, ref, set, update } from 'firebase/database';
+import {database, userId, userRef} from '../../firebase'
 import './card.css'
 
-const Card = ({movies}) => {
+const Card = ({movies, darkMode}) => {
   const navigate = useNavigate()
   const location = useLocation()
   const [favorites, setFavorites] = useState([])
   const imageUrl = 'https://image.tmdb.org/t/p/w300/'
-
   const genres = [
     { name: 'Adventure', number: 12 }, { name: 'Fantasy', number: 14 }, { name: 'Animation', number: 16 }, { name: 'Drama', number: 18 },
     { name: 'Action', number: 28 }, { name: 'Horror', number: 27 }, { name: 'Comedy', number: 35 }, { name: 'History', number: 36 },
@@ -30,23 +29,20 @@ const Card = ({movies}) => {
     const checkUserStatus = async () => {
       try{
         // Check if the user exists in the database
-        const snapshot = await get(userData)
-        console.log('snapshot',snapshot.val())
+        const snapshot = await get(userRef)
         if (!snapshot.exists()){
-          // If user does not exist, initialize a new user with an empty movieId array
+          // If user does not exist, initialize a new user with an empty movieId array and darkMode
           await set(ref(database, `users/${userId}`), {
-            moviesId: []
+            moviesId: [],
+            darkMode: false
           })
         } else {
-          const userData = []
-          snapshot.forEach((id) => {
-            const data = id.val()
-            userData.push(data)
-          })
-          setFavorites(userData)
+          // get the moviesId present
+          const userData = snapshot.val()?.moviesId
+          setFavorites(userData || [])
         }
       } catch (error){
-        console.error('Checking user status failed:', error)
+        // console.error('Checking user status failed:', error)
       }
     }
     checkUserStatus()
@@ -54,40 +50,50 @@ const Card = ({movies}) => {
     favoriteMovies(1)
   }, [])
 
-  const favoriteMovies = async (movieId) => {
+  const favoriteMovies = async (id) => {
     try{
       const snapshot = await get(userRef)
-      let favoriteMovieIds = snapshot.val() || []
-      const numberIndex = favoriteMovieIds.indexOf(movieId)
+      let favoriteMovieIds = snapshot.val()?.moviesId || []
+      const numberIndex = favoriteMovieIds.indexOf(id)
 
-      // movieId does not exists, add it to the array else remove it from the array
-      if (numberIndex === -1) favoriteMovieIds.push(movieId)
+      // if movieId does not exists, add it to the array else remove it from the array
+      if (numberIndex === -1) favoriteMovieIds.push(id)
       else favoriteMovieIds.splice(numberIndex, 1)
 
       // Update the favoriteMovieIds in the database
-      await set(userRef, favoriteMovieIds)
-
+      await update(userRef, {
+        moviesId: favoriteMovieIds
+      })
       // Update the local state with the updated favorites
       setFavorites([...favoriteMovieIds])
     } catch (error){
-      console.error('Error:', error)
+      //console.error('Error:', error)
     }
   }
-  console.log(movies)
+
   return (
-    <div>
-      {
-        !location.pathname.startsWith('/favorite-movies') &&
-        <div className='favorite'>
-          <span onClick={() => navigate('/favorite-movies')}>go to favorites</span>
-          <img src='/icons/home/favorite.png' alt='img'/>
-        </div>
-      }
-      <div className={`movie-cards ${location.pathname.startsWith('/favorite-movies') && 'movie-cards-1'}`}>
+    <div className='cards-1'>
+      <div className='movie-3'>
+        {
+          !location.pathname.startsWith('/favorite-movies') &&
+          <div className={`favorite ${darkMode && 'favorite-dark'}`}>
+            <span onClick={() => navigate('/favorite-movies')}>go to favorites</span>
+            <img src='/icons/home/favorite.png' alt='img'/>
+          </div>
+        }
+        {
+          location.pathname === '/movies' &&
+          <div onClick={() => navigate('/')} className={`back back-1 ${darkMode && 'back-1-dark'}`}>
+            <img src='/icons/home/arrow-down.png' alt='img'/>
+            <span>Back</span>
+          </div>
+        }
+      </div>
+      <div className={`movie-cards ${location.pathname === '/favorite-movies' && 'movie-cards-1'}`}>
         {movies?.map((movie, index) => (
           <div className='box' key={index}>
             <div className='image'>
-              <img src={imageUrl + movie?.poster_path} alt='img' onClick={() => navigate(`/movies/${movie?.id}`)}/>
+              <img src={imageUrl + movie?.poster_path} alt='img' onClick={() => navigate(`/watch/${movie?.id}`)}/>
               <span onClick={() => favoriteMovies(movie?.id)} className={`favorite-movie ${favorites.includes(movie?.id) && 'added-to-favorite'}`}>
                 <img src='/icons/home/favorite.png' alt='img'/>
               </span>
@@ -95,8 +101,8 @@ const Card = ({movies}) => {
 
             <div className='movie-description'>
               <p>USA, {movie?.release_date}</p>
-              <p className='movie-title'>{movie?.title}</p>
-              <p className='movie-scores'>
+              <p className={`movie-title ${darkMode && 'movie-title-dark'}`}>{movie?.title}</p>
+              <p className={`movie-scores ${darkMode && 'movie-scores-dark'}`}>
                 <span>
                   <span className='name'>IMDb</span>
                   <span className='rating'>{(movie?.vote_average * 10).toFixed(1)} / 100</span>

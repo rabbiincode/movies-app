@@ -1,8 +1,8 @@
 .header{
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -13,13 +13,12 @@
 
 .change-background{
   background: #000;
-  transition: all ease-in-out 1.2s;
 }
 
 .menu, .navbar, form{
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .menu > img{
@@ -45,10 +44,15 @@
   height: 2.5rem;
   transition: 0.3s;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .navbar-icon:hover{
   opacity: 0.8;
+}
+
+.home-icon-1{
+  display: none;
 }
 
 form{
@@ -80,9 +84,48 @@ input:focus{
   outline: none;
 }
 
-@media (max-width: 768px){
+.search-icon, .search-icon > img{
+  display: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.home-sidebar-hide{
+  display: none;
+  transition: all ease-in-out 2s;
+}
+
+@media (max-width: 1200px){
   .header{
     padding: 1rem 3rem;
+  }
+}
+
+@media (max-width: 768px){
+  .header{
+    padding: 1rem 2rem;
+  }
+
+  .form{
+    display: none;
+  }
+
+  .search-icon, .search-icon > img{
+    display: flex;
+  }
+
+  .toggle-button-1{
+    display: none;
+  }
+
+  .home-icon-1{
+    display: flex;
+  }
+
+  .home-sidebar-show{
+    display: flex;
+    transition: all ease-in-out 2s;
   }
 }
 
@@ -91,7 +134,13 @@ input:focus{
     padding: 1rem 1.5rem;
   }
 
-  .sign-in, form{
+  .signed-in{
+    display: none;
+  }
+}
+
+@media (max-width: 250px){
+  .search-icon, .search-icon > img{
     display: none;
   }
 }

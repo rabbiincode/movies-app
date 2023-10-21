@@ -1,24 +1,30 @@
 .home{
-  background: #e5e7eb;
   color: white;
 }
 
 .home-background{
-  position: relative;
   background: #18181b;
-  height: 70vh;
+  height: 90vh;
 }
 
 .movie{
-  width: 40%;
-  position: absolute;
+  width: 50%;
   display: flex;
   align-items: center;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   padding: 0 6rem;
+}
+
+.content-title{
+  padding-top: 15vh;
+}
+
+.text{
+  transition: all ease-in-out 1s;
+  padding-bottom: 1rem;
+}
+
+.text:hover{
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .scores{
@@ -26,6 +32,7 @@
   align-items: center;
   color: white;
   opacity: 0.8;
+  margin-top: 0.5rem;
 }
 
 .title-1{
@@ -51,11 +58,21 @@
 }
 
 .description-1{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
   font-size: 1.1rem;
   margin-top: 1.5rem;
+  transition: all ease-in-out 1s;
 }
 
-button{
+.description-1:hover{
+  transform: scaleY(1.5);
+}
+
+.trailer-button{
   background: #BE123C;
   color: white;
   display: flex;
@@ -66,27 +83,42 @@ button{
   border: none;
   outline: none;
   border-radius: 5px;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   padding: 0.7rem 1.5rem;
 }
 
 .movies{
   color: black;
-  padding: 6rem;
+  z-index: 1000;
+  padding: 0 6rem;
+  margin-top: -30vh;
 }
 
 .featured{
   font-size: 1.5rem;
   font-weight: 600;
+  color: white;
 }
 
 .see-more{
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  background: #f3f2f2;
   color: #BE123C;
   font-size: 1.2rem;
   font-weight: 600;
+  border-radius: 10px 5px 10px 5px;
+  cursor: pointer;
+  padding: 0 0.3rem 0.3rem;
+}
+
+.see-more:hover{
+  opacity: 0.85;
+}
+
+.see-more > img{
+  margin: 0.3rem 0 0 0;
 }
 
 .movies-header{
@@ -99,12 +131,12 @@ button{
 .error{
   display: flex;
   justify-content: center;
-  color: #ff0000;
+  color: #f73636;
   font-size: 1.2rem;
   margin: 3rem 0;
 }
 
-@media (max-width: 768px){
+@media (max-width: 1200px){
   .movie{
     width: 70%;
     padding: 0 3rem;
@@ -115,6 +147,16 @@ button{
   }
 }
 
+@media (max-width: 768px){
+  .movie{
+    padding: 0 2rem;
+  }
+
+  .movies{
+    padding: 2rem;
+  }
+}
+
 @media (max-width: 450px){
   .movie{
     padding: 0 1.5rem;
@@ -122,5 +164,13 @@ button{
 
   .movies{
     padding: 1.5rem;
+  }
+}
+
+@media (max-width: 250px){
+  .movies-header{
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
   }
 }

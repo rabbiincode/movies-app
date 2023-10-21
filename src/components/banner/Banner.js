@@ -12,8 +12,8 @@ const Banner = () => {
       try {
         const response = await request.get('/discover/movie', {
           params: {
-            query: randomPage,
-          },
+            query: randomPage
+          }
         })
 
         const movies = response.data.results
