@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { userId } from '../../firebase'
 import HomeSidebar from '../home/HomeSidebar'
 import ToggleButton from '../toggleButton/ToggleButton'
+import UserDetails from '../authentication/UserDetails'
 import './header.css'
 
 const Header = ({darkMode}) => {
+  const userId = UserDetails()
   const navigate = useNavigate()
   const [input, setInput] = useState('')
   const [open, setOpen] = useState(false)
@@ -14,9 +15,9 @@ const Header = ({darkMode}) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
+      if (window.scrollY > 0){
         setIsScrolled(true)
-      } else {
+      } else{
         setIsScrolled(false)
       }
     }
@@ -45,7 +46,7 @@ const Header = ({darkMode}) => {
       <span onClick={toggleSidebar} className='search-icon'><img src='/icons/header/search.png' alt='img'/></span>
 
       <div className='navbar'>
-        <span className='signed-in'>Hi, {userId}</span>
+        <span className='signed-in'>Hi, {userId?.email.split('@')[0]}</span>
         <span className='toggle-button-1'>
           <ToggleButton darkMode={darkMode}/>
         </span>

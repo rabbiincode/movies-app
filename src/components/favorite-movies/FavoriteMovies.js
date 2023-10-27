@@ -29,7 +29,6 @@ const FavoriteMovies = ({favoriteMoviesId, darkMode}) => {
         // Filter out undefined and null values which indicate missing or invalid moviesId
         const validMovies = movieDetails?.filter(movie => movie !== undefined && movie !== null)
         setMovies(validMovies)
-
       }
     }
     fetchFavoriteMovieDetails()

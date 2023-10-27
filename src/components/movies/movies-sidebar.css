@@ -39,13 +39,9 @@
   padding: 0.8rem;
 }
 
-.content-6:hover{
+.content-6:hover, .current-1{
   color: darkred;
   opacity: 0.85;
   border-left: 0.4rem solid #f43f5e;
-}
-
-.current-1{
-  color: darkred;
-  border-left: 0.4rem solid #f43f5e;
+  padding-left: 0.4rem;
 }

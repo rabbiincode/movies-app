@@ -1,18 +1,24 @@
 import React from 'react'
-import { userRef} from '../../firebase'
-import { get, update } from 'firebase/database'
+import supabase from '../../supabase'
+import UserDetails from '../authentication/UserDetails'
 import './toggle-button.css'
 
 const ToggleButton = ({darkMode}) => {
+  const userId = UserDetails()
+
   const toggleButton = async () => {
     try{
-      const snapshot = await get(userRef)
-      let currentDarkMode  = snapshot.val()?.darkMode || false
-      currentDarkMode = !currentDarkMode 
+      const { data: existingUser } = await supabase
+      .from('users')
+      .select('darkmode')
+      .eq('userid', userId?.id)
+      const currentDarkMode = existingUser[0].darkmode
+
       // Update the darkMode in the database
-      await update(userRef, {
-        darkMode: currentDarkMode 
-      })
+      await supabase
+      .from('users')
+      .update({ darkmode: !currentDarkMode  })
+      .eq('userid', userId?.id)
     } catch (error){
       //console.error('Error:', error)
     }

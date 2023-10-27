@@ -1,10 +1,13 @@
 import React from 'react'
 import { useLocation, useNavigate } from 'react-router'
+import { useLogout } from '../authentication/LogOut'
 import './sidebar.css'
 
 const Sidebar = ({open, toggleSidebar, darkMode}) => {
+  const logout = useLogout()
   const location = useLocation()
   const navigate = useNavigate()
+  const handleLogout = () => logout()
 
   return (
     <div className={`sidebar ${open && 'show'} ${darkMode && 'sidebar-dark'}`}>
@@ -36,7 +39,7 @@ const Sidebar = ({open, toggleSidebar, darkMode}) => {
           <span className='numbers'>50K people are playing now</span><br/>
           <button>Start playing</button>
         </div>
-        <span>
+        <span onClick={handleLogout}>
           <img src='/icons/sidebar/logout.png' alt='img'/> Log out
         </span>
       </div>

@@ -1,10 +1,14 @@
 import React, {useState} from 'react'
-import { userId } from '../../firebase'
 import ToggleButton from '../toggleButton/ToggleButton'
+import UserDetails from '../authentication/UserDetails'
+import { useLogout } from '../authentication/LogOut'
 import './home-sidebar.css'
 
 const HomeSidebar = ({darkMode, toggleSidebar, searchMovies}) => {
+  const logout = useLogout()
+  const userId = UserDetails()
   const [input, setInput] = useState('')
+  const handleLogout = () => logout()
 
   return (
     <div className='home-sidebar'>
@@ -12,7 +16,7 @@ const HomeSidebar = ({darkMode, toggleSidebar, searchMovies}) => {
         <span onClick={toggleSidebar} className='navbar-icon-1 hide-sidebar'>
           <img src='/icons/header/navbar.png' alt='img'/>
         </span>
-        <span className='signed-in-1'>Hi, {userId}</span>
+        <span className='signed-in-1'>Hi, {userId?.email.split('@')[0]}</span>
 
         <div className='input-field'>
           <form onSubmit={(e) => searchMovies(e, input)} className='form-1'>
@@ -25,7 +29,7 @@ const HomeSidebar = ({darkMode, toggleSidebar, searchMovies}) => {
             <ToggleButton darkMode={darkMode}/>
           </div>
         </div>
-        <span className='log-out'>LogOut</span>
+        <span onClick={handleLogout} className='log-out'>LogOut</span>
         <span className='movie-box'>MovieBox</span>
       </div>
       <div onClick={toggleSidebar} className='bg-transparent-1'></div>

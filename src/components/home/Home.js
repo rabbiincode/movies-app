@@ -1,14 +1,16 @@
 import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router'
 import request from '../../api'
+import Banner from '../banner/Banner'
+import UserDetails from '../authentication/UserDetails'
 import Card from '../card/Card'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
-import Banner from '../banner/Banner'
 import './home.css'
 
 const Home = ({darkMode}) => {
   const banner = Banner()
+  const userId = UserDetails()
   const navigate = useNavigate()
   const [movies, setMovies] = useState([])
   const [error, setError] = useState('loading...')
@@ -16,7 +18,7 @@ const Home = ({darkMode}) => {
 
   useEffect(() => {
     const searchMovies = async () => {
-      try {
+      try{
         const response = await request.get('/discover/movie')
         const movieData = response.data.results
         setMovies(movieData)
@@ -25,7 +27,7 @@ const Home = ({darkMode}) => {
       }
     }
     searchMovies()
-  }, [])
+  }, [userId?.id])
 
   return (
     <div className='home'>

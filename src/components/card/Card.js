@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import { useLocation, useNavigate } from 'react-router'
-import { get, ref, set, update } from 'firebase/database';
-import {database, userId, userRef} from '../../firebase'
+import UserDetails from '../authentication/UserDetails'
+import supabase from '../../supabase'
 import './card.css'
 
 const Card = ({movies, darkMode}) => {
+  const userId = UserDetails()
   const navigate = useNavigate()
   const location = useLocation()
   const [favorites, setFavorites] = useState([])
@@ -29,43 +30,56 @@ const Card = ({movies, darkMode}) => {
     const checkUserStatus = async () => {
       try{
         // Check if the user exists in the database
-        const snapshot = await get(userRef)
-        if (!snapshot.exists()){
-          // If user does not exist, initialize a new user with an empty movieId array and darkMode
-          await set(ref(database, `users/${userId}`), {
-            moviesId: [],
-            darkMode: false
-          })
-        } else {
-          // get the moviesId present
-          const userData = snapshot.val()?.moviesId
-          setFavorites(userData || [])
+        const { data: existingUser } = await supabase
+        .from('users')
+        .select('*')
+        .eq('userid', userId?.id)
+
+        if (!existingUser.length > 0){
+          // User does not exist, create a new user with empty moviesId array
+          await supabase
+          .from('users')
+          .upsert([
+            {
+              userid: userId?.id,
+              moviesid: [],
+              darkmode: false
+            }
+          ])
         }
       } catch (error){
         // console.error('Checking user status failed:', error)
       }
     }
     checkUserStatus()
-    // call favoriteMovies with any number to ensure it is updated on component mount 
+    // call favoriteMovies with any number to ensure it is updated on component mount
     favoriteMovies(1)
-  }, [])
+  }, [userId?.id])
 
   const favoriteMovies = async (id) => {
     try{
-      const snapshot = await get(userRef)
-      let favoriteMovieIds = snapshot.val()?.moviesId || []
+      // Get favoriteMovieIds from database
+      const { data: existingUser } = await supabase
+      .from('users')
+      .select('moviesid')
+      .eq('userid', userId?.id)
+      let favoriteMovieIds = existingUser[0].moviesid
       const numberIndex = favoriteMovieIds.indexOf(id)
+      console.log('clicked', favoriteMovieIds)
 
       // if movieId does not exists, add it to the array else remove it from the array
       if (numberIndex === -1) favoriteMovieIds.push(id)
       else favoriteMovieIds.splice(numberIndex, 1)
 
       // Update the favoriteMovieIds in the database
-      await update(userRef, {
-        moviesId: favoriteMovieIds
-      })
+      await supabase
+      .from('users')
+      .update({ moviesid: favoriteMovieIds })
+      .eq('userid', userId?.id)
+
       // Update the local state with the updated favorites
-      setFavorites([...favoriteMovieIds])
+      setFavorites(favoriteMovieIds)
+      console.log('finished', favoriteMovieIds)
     } catch (error){
       //console.error('Error:', error)
     }
