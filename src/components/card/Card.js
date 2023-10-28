@@ -43,7 +43,7 @@ const Card = ({movies, darkMode}) => {
             {
               userid: userId?.id,
               moviesid: [],
-              darkmode: false
+              darkmode: true
             }
           ])
         }
