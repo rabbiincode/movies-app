@@ -65,7 +65,6 @@ const Card = ({movies, darkMode}) => {
       .eq('userid', userId?.id)
       let favoriteMovieIds = existingUser[0].moviesid
       const numberIndex = favoriteMovieIds.indexOf(id)
-      console.log('clicked', favoriteMovieIds)
 
       // if movieId does not exists, add it to the array else remove it from the array
       if (numberIndex === -1) favoriteMovieIds.push(id)
@@ -79,7 +78,6 @@ const Card = ({movies, darkMode}) => {
 
       // Update the local state with the updated favorites
       setFavorites(favoriteMovieIds)
-      console.log('finished', favoriteMovieIds)
     } catch (error){
       //console.error('Error:', error)
     }

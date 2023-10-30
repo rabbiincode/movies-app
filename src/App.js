@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router'
 import { useNavigate } from "react-router-dom"
 import Home from './components/home/Home'
 import Movies from './components/movies/Movies'
+import Series from './components/movies/Series'
 import { Auth, user } from './components/authentication/Auth'
 import WatchScreen from './components/watch-screen/WatchScreen'
 import SearchScreen from './components/search-screen/SearchScreen'
@@ -55,6 +56,7 @@ const App = () => {
         <Route element={<Auth/>} path='/auth'/>
         <Route element={<Home darkMode={darkMode}/>} path='/'/>
         <Route element={<Movies darkMode={darkMode}/>} path='/movies'/>
+        <Route element={<Series darkMode={darkMode}/>} path='/movies/:series'/>
         <Route element={<WatchScreen darkMode={darkMode}/>} path='/watch/:id'/>
         <Route element={<SearchScreen darkMode={darkMode}/>} path='/search/:input'/>
         <Route element={<FavoriteMovies favoriteMoviesId={favoriteMoviesId} darkMode={darkMode}/>} path='/favorite-movies'/>

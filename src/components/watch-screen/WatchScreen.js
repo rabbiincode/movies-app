@@ -8,12 +8,12 @@ import './watch-screen.css'
 const WatchScreen = ({darkMode}) => {
   const banner = Banner()
   const {id} = useParams()
-  const [error, setError] = useState('loading...')
   const [open, setOpen] = useState(false)
   const [director, setDirector] = useState('')
   const [writers, setWriters] = useState([])
   const [stars, setStars] = useState([])
   const [trailerKey, setTrailerKey] = useState('')
+  const [error, setError] = useState('loading...')
   const [isPlaying, setIsPlaying] = useState(false)
   const [movieDetails, setMovieDetails] = useState({})
   const toggleSidebar = () => setOpen(!open)
@@ -121,8 +121,10 @@ const WatchScreen = ({darkMode}) => {
               <span>•</span>
               <span>{formatTime(runtime)}</span>
             </span>
-            <small>Action</small>
-            <small>Drama</small>
+            <span className={`action ${darkMode && 'action-dark'}`}>
+              <small>Action</small>
+              <small>Drama</small>
+            </span>
           </p>
           <p className='count'>
             <img src='/icons/watch/star.png' alt='img'/>
@@ -152,7 +154,7 @@ const WatchScreen = ({darkMode}) => {
             <button className='button-2'>
               <img src='/icons/watch/list.png' alt='img'/> More watch options
             </button>
-            <div className='image-banner' style={{ backgroundImage: `url(${banner.posterURL})` }}>
+            <div className='image-banner' style={{ backgroundImage: `url(${banner.posterURL})`, backgroundSize: 'cover' }}>
               <span><img src='/icons/watch/list1.png' alt='img'/> The Best Movies and Shows in {month[new Date().getMonth()]}</span>
             </div>
           </div>
