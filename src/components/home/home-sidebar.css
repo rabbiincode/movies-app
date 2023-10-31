@@ -1,0 +1,93 @@
+.home-sidebar{
+  display: none;
+  position: fixed;
+  min-height: 100vh;
+  top: 0; 
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+}
+
+.hide-sidebar{
+  position: absolute;
+  top: 1.2rem;
+  right: 2rem;
+}
+
+.home-sidebar-content{
+  position: relative;
+  height: 40vh;
+  background: #1e293b;
+}
+
+.signed-in-1{
+  display: none;
+}
+
+.form-1{
+  margin: 1.2rem 6rem 1.5rem 1.5rem;
+}
+
+.toggle-button-2{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  margin: 2rem 2rem;
+}
+
+.log-out{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #fca5a5;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  border-radius: 5px 0 0 0;
+  transition: all ease-in-out 0.5s;
+}
+
+.log-out:hover{
+  background: red;
+  color: #fff;
+}
+
+.movie-box{
+  position: absolute;
+  bottom: 0;
+  left: 0.5rem;
+  opacity: 0.4;
+}
+
+.bg-transparent-1{
+  height: 60vh;
+  background: #1e293b;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+@media (max-width: 768px){
+  .home-sidebar{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 450px){
+  .hide-sidebar{
+    right: 1.5rem;
+  }
+
+  .signed-in-1{
+    display: flex;
+    font-size: 1.5rem;
+    margin: 2rem 2rem;
+  }
+
+  .form-1{
+    margin-right: 1.5rem;
+  }
+}

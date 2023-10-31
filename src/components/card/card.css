@@ -1,0 +1,155 @@
+.cards-1{
+  padding-bottom: 1rem;
+}
+
+.movie-cards{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.movie-cards-1{
+  justify-content: space-around;
+}
+
+.favorite, .back-1{
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #141414;
+  color: #fff;
+  width: fit-content;
+  font-size: 1.3rem;
+  font-weight: 400;
+  cursor: pointer;
+  border-radius: 5px 10px 5px 10px;
+  padding: 0 0.3rem 0.3rem;
+  margin-bottom: 1rem;
+  transition: all ease-in-out 1.2s;
+}
+
+.favorite:hover, .back-1:hover{
+  opacity: 0.85 !important;
+}
+
+.favorite-dark, .back-1-dark{
+  background: #f3f2f2;
+  color: #000;
+}
+
+.favorite > span{
+  color: #ec4899;
+}
+
+.favorite > img{
+  width: 0.9rem;
+  height: 0.9rem;
+  margin: 0.3rem 0 0 0.2rem;
+}
+
+.back-1{
+  padding-right: 1rem;
+}
+
+.movie-3{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.box{
+  width: 280px;
+  margin-bottom: 3rem;
+}
+
+.image{
+  position: relative;
+  max-height: 400px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.image > img{
+  border-radius: 10px;
+}
+
+.favorite-movie{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #94a3b8;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  transition: 0.3s;
+  border-radius: 50%;
+  margin: 1.2rem 1.2rem 0 0;
+}
+
+.favorite-movie > img{
+  width: 1.5rem;
+  margin-top: 0.2rem;
+}
+
+.favorite-movie:hover{
+  opacity: 0.8;
+}
+
+.added-to-favorite{
+  background: #ec4899;
+}
+
+.movie-description{
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  color: gray;
+  opacity: 0.8;
+  margin-top: 2rem;
+}
+
+.movie-description > p{
+  margin: 0;
+}
+
+.movie-title{
+  color: black;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.movie-scores{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: black;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.movie-title-dark, .movie-scores-dark{
+  color: #fff;
+}
+
+.name{
+  background: yellow;
+  color: black;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  border-radius: 1.5px;
+  margin-right: 1rem;
+  padding: 0.05rem 0.2rem;
+}
+
+.percentage{
+  margin-left: 3rem;
+}
+
+@media(max-width: 650px){
+  .box{
+    margin: auto;
+    margin-bottom: 3rem;
+  }
+}

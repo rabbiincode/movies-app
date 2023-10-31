@@ -1,0 +1,22 @@
+.series{
+  min-height: 100vh;
+}
+
+.series-content{
+  margin-left: 200px;
+  padding: 1.5rem 1.5rem 0.5rem;
+}
+
+.series-name{
+  color: red;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px){
+  .series-content{
+    margin-left: 0;
+    padding-bottom: 1.5rem;
+  }
+}

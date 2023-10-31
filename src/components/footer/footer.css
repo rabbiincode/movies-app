@@ -1,0 +1,60 @@
+.footer{
+  display: table;
+  color: #000;
+  text-align: center;
+  padding-top: 2rem;
+  margin: auto;
+}
+
+.footer-dark{
+  color: #fff;
+}
+
+.footer > div{
+  margin-bottom: 2rem;
+}
+
+.socials{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.socials > img{
+  width: 1.5rem;
+}
+
+.facebook{
+  background: #141414;
+  border-radius: 50%;
+}
+
+.info{
+  display: flex;
+  gap: 3rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.copyright{
+  color: gray;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+@media (max-width: 450px){
+  .info{
+    font-size: 1rem;
+  }
+
+  .copyright{
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 450px){
+  .conditions{
+    display: none;
+  }
+}

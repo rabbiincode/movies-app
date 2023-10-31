@@ -1,0 +1,63 @@
+html, body{
+  min-height: 100%;
+  font-size: clamp(10px, 16px, 20px);
+}
+
+.app{
+  background: #e5e7eb;
+  transition: all ease-in-out 1.2s;
+}
+
+.app-dark{
+  background: #141414;
+}
+
+button{
+  cursor: pointer;
+}
+
+button:hover{
+  opacity: 0.8;
+}
+
+img{
+  max-width: 100%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #000;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #111827;
+}
+
+@media (max-width: 768px){
+  html, body{
+    font-size: clamp(8px, 14.5px, 18px);
+  }
+}
+
+@media (max-width: 640px){
+  html, body{
+    font-size: clamp(7px, 13.5px, 17px);
+  }
+}
+
+@media (max-width: 375px){
+  html, body{
+    font-size: clamp(6px, 11px, 15px);
+  }
+}

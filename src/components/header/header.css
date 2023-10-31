@@ -1,0 +1,146 @@
+.header{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 6rem;
+  z-index: 200;
+  transition: all ease-in-out 1.2s;
+}
+
+.change-background{
+  background: #000;
+}
+
+.menu, .navbar, form{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.menu > img{
+  width: 3rem;
+}
+
+.menu > span{
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.navbar > span{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.navbar-icon-1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #BE123C;
+  width: 2.5rem;
+  height: 2.5rem;
+  transition: 0.3s;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.navbar-icon:hover{
+  opacity: 0.8;
+}
+
+.home-icon-1{
+  display: none;
+}
+
+form{
+  flex: 0.45;
+  display: flex;
+  margin: 0.1rem;
+  margin-right: 1rem;
+  border-radius: 10px;
+  border: 0.1px solid lightgray;
+  padding-right: 0.5rem;
+}
+
+input{
+  width: 100%;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  background: transparent;
+  color: white;
+  padding: 0.5rem;
+}
+
+::placeholder{
+  color: white;
+  font-size: 1.2rem;
+}
+
+input:focus{
+  outline: none;
+}
+
+.search-icon, .search-icon > img{
+  display: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+
+.home-sidebar-hide{
+  display: none;
+  transition: all ease-in-out 2s;
+}
+
+@media (max-width: 1200px){
+  .header{
+    padding: 1rem 3rem;
+  }
+}
+
+@media (max-width: 768px){
+  .header{
+    padding: 1rem 2rem;
+  }
+
+  .form{
+    display: none;
+  }
+
+  .search-icon, .search-icon > img{
+    display: flex;
+  }
+
+  .toggle-button-1{
+    display: none;
+  }
+
+  .home-icon-1{
+    display: flex;
+  }
+
+  .home-sidebar-show{
+    display: flex;
+    transition: all ease-in-out 2s;
+  }
+}
+
+@media (max-width: 450px){
+  .header{
+    padding: 1rem 1.5rem;
+  }
+
+  .signed-in{
+    display: none;
+  }
+}
+
+@media (max-width: 250px){
+  .search-icon, .search-icon > img{
+    display: none;
+  }
+}

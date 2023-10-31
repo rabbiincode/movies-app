@@ -1,0 +1,78 @@
+.auth{
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  padding: 2rem;
+}
+  
+.auth > span{
+  position: absolute;
+  top: 0;
+  left: 0.3rem;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+:root {
+  --color: #dbe0ea;
+  --color-shade-1: #d1d5db;
+  /* --brand-color: #111827; */
+  --background-color: #000000bf;
+  --headline1-font-size: 29px;
+  --headline2-font-size: 16px;
+  --headline1-margin: 10px 40px;
+  --border-radius: 6px;
+  --font-size: 0.875rem;
+  --item-height: 36px;
+  --link-color: #1c73e8;
+  --divider-padding: 0 15px;
+}
+
+hanko-auth{
+  --container-max-width: 640px;
+  --container-padding: 40px;
+}
+
+hanko-auth::part(container){
+  border-radius: 8px;
+}
+
+hanko-auth::part(headline1),
+hanko-auth::part(headline2){
+  color: #f2f3f5;
+  line-height: 2rem;
+  font-size: 2rem;
+  font-family: Cal Sans;
+}
+
+hanko-auth::part(form-item){
+  min-width: 100%;
+}
+
+hanko-auth::part(input){
+  background: #333;
+  border: none;
+  margin-bottom: 12px;
+}
+
+hanko-auth::part(secondary-button){
+  border-color: var(--color-shade-1);
+}
+
+#hankoAuth::part(button){
+  background: #000000bf;
+  border: none;
+}
+
+#hankoAuth::part(button):hover{
+  background: rgb(9, 12, 18);
+  opacity: 0.8;
+}
+
+hanko-auth::part(divider){
+  margin: 24px 0;
+}

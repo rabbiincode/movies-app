@@ -1,0 +1,47 @@
+.movies-sidebar{
+  position: fixed;
+  min-height: 100vh;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  text-align: center;
+  z-index: 200;
+}
+
+.transparent-bg{
+  background: #64748b;
+  width: 100%;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.movies-sidebar-content{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: #64748b;
+  width: 300px;
+  padding-top: 5rem;
+}
+
+.close-icon{
+  position: absolute;
+  top: 1.25rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.content-6{
+  background: #0891b2;
+  cursor: pointer;
+  padding: 0.8rem;
+}
+
+.content-6:hover, .current-1{
+  color: darkred;
+  opacity: 0.85;
+  border-left: 0.4rem solid #f43f5e;
+  padding-left: 0.4rem;
+}
