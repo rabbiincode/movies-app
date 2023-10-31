@@ -2,7 +2,7 @@ import { useEffect, useCallback, useMemo } from "react"
 import { useNavigate } from "react-router-dom"
 import { register, Hanko } from "@teamhanko/hanko-elements"
 import './auth.css'
-const hankoApi = 'https://d702bb39-febc-4ec3-a339-b6e5c89dd7be.hanko.io'
+const hankoApi = import.meta.env.VITE_REACT_APP_HANKO_API_URL
 const user = new Hanko(hankoApi)
 
 const Auth = () => {
