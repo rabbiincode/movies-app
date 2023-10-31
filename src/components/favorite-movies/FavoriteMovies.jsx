@@ -39,10 +39,10 @@ const FavoriteMovies = ({favoriteMoviesId, darkMode}) => {
       <div className='no-result'>
         <div className='no-result-1'>
           <span>{!validMoviesId?.length > 0 ? 'No Favorite Movie Added Yet' : error}</span>
-          <span onClick={() => navigate('/')} className='back back-button'>
+          <span onClick={() => navigate(-1)} className='back back-button'>
             <img src='/icons/home/arrow-down.png' alt='img'/>
-          <span>Back</span>
-        </span>
+            <span>Back</span>
+          </span>
         </div>
       </div>
     )
