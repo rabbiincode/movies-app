@@ -24,6 +24,10 @@ A Movie Discovery Web Application that allows users to search for movies, view d
 
 **Authentication:** Hanko Auth
 
+**Client:** React.JS
+
+**API:** TMDb API
+
 
 ## Live Project Link
 
